@@ -26,10 +26,34 @@ COPY mix.exs mix.lock ./
 RUN mix deps.get --only $MIX_ENV
 
 
-# compile the dependencies
+# START:config
 RUN mkdir config
+
 # copy compile-time config files before we compile dependencies
 # to ensure any relevant config change will trigger the dependencies
-# to get re-compiled
+# to get re-compiled.
 COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
+# END:config
+
+
+# START:release
+COPY priv priv
+
+COPY lib lib
+
+COPY assets assets
+
+# compile assets
+RUN mix assets.deploy
+
+# compile the release
+RUN mix compile
+
+# changes to config/runtime.exs don't require recompiling the code
+COPY config/runtime.exs config/
+
+COPY rel rel
+
+RUN mix release
+# END:release
