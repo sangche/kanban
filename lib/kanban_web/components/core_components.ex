@@ -12,7 +12,9 @@ defmodule KanbanWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import KanbanWeb.Gettext
+  # import KanbanWeb.Gettext
+
+  use Gettext, backend: Kanban.Gettext
 
   @doc """
   Renders a modal.
