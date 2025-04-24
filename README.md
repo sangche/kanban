@@ -18,8 +18,14 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Source: https://github.com/phoenixframework/phoenix
 
 
-## build docker base and install mix dependencies for builder stage
+## Build docker base and install/build phoenix app 
 
 ```sh
 $ docker build --tag kanban:latest .
+```
+
+## Run docker phoenix app
+
+```sh
+$ docker run -ti -p 4000:4000 -e SECRET_KEY_BASE=$(mix phx.gen.secret) kanban:latest
 ```
