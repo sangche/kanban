@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci: # this action id
-    runs-on: ubuntu20
+  ci:
+    runs-on: ubuntu-latest
     name: Compile
     env:
       MIX_ENV: test
@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Elixir
-        uses: erlef/setup-beam@v1.17.3
+        uses: erlef/setup-beam@v1.18.2
         with:
           version-file: .tool-versions
           version-type: strict
