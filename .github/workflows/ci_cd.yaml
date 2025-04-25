@@ -23,7 +23,7 @@ jobs:
           version-type: strict
 
       - name: Print setup-beam outputs
-        run: echo ${{ steps.setup-beam.outputs }} && ls -l ${{ env.INSTALL_DIR_FOR_ELIXIR }}
+        run: echo ${{ steps.setup-beam.outputs.elixir-version }} && cat ${{ env.INSTALL_DIR_FOR_ELIXIR }}/VERSION
 
       - name: Cache directories(deps, _build)
         uses: actions/cache@v4
