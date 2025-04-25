@@ -8,10 +8,9 @@ on:
 
 jobs:
   ci: # this action id
-    #runs-on: ubuntu-latest
+    runs-on: ubuntu20
     name: Compile
     env:
-      ImageOS: ubuntu20
       MIX_ENV: test
     steps:
       - uses: actions/checkout@v4
