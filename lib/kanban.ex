@@ -8,4 +8,5 @@ defmodule Kanban do
   """
 
   # just to cause fail for 'MIX_ENV=test mix compile --warnings-as-errors'
+  # ...
 end
