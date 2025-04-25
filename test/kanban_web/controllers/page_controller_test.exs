@@ -5,4 +5,8 @@ defmodule KanbanWeb.PageControllerTest do
     conn = get(conn, ~p"/")
     assert html_response(conn, 200) =~ "Peace of mind from prototype to production"
   end
+
+  test "GET /error", %{conn: _conn} do
+    assert false
+  end
 end
