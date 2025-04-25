@@ -7,6 +7,5 @@ defmodule Kanban do
   if it comes from the database, an external API or others.
   """
 
-  @unused_attr 0
   # just to cause fail for 'MIX_ENV=test mix compile --warnings-as-errors'
 end

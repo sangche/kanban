@@ -24,4 +24,5 @@ jobs:
       - name: Get dependencies
         run: mix deps.get
 
-      - run: mix compile --warnings-as-errors
+      - name: Compile with warnings-as-errors
+        run: mix compile --warnings-as-errors
