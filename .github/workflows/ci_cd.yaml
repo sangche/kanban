@@ -48,6 +48,7 @@ jobs:
             ${{ env.KEY_BASE }}-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
             ${{ env.KEY_BASE }}-
+        run: echo ${{ env.EX_OTP_VERSIONS }}
 
 
       - name: Get dependencies
