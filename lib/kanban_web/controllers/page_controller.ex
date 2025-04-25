@@ -8,5 +8,5 @@ defmodule KanbanWeb.PageController do
     render(conn, :home, layout: false)
   end
 
-  #
+  ##
 end
