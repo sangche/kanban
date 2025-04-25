@@ -22,9 +22,6 @@ jobs:
           version-file: .tool-versions
           version-type: strict
 
-      - name: Print setup-beam outputs
-        run: echo ${{ steps.setup-beam.outputs.elixir-version }} && cat ${{ env.INSTALL_DIR_FOR_ELIXIR }}/VERSION
-
       - name: Cache directories(deps, _build)
         uses: actions/cache@v4
         id: cache-deps
@@ -39,13 +36,12 @@ jobs:
       - name: Cache plt files
         uses: actions/cache@v4
         env: 
-          EX_OTP_VERSIONS: ${{ steps.setup-beam.outputs.elixir-version }}
-          KEY_BASE: plt-${{ runner.os }}-${{ env.EX_OTP_VERSIONS }}
+          KEY_BASE: plt-${{ runner.os }}-${{ steps.setup-beam.outputs.elixir-version }}
         with:
           path: |
             priv/plts
           key: |
-            plt-${{ runner.os }}-${{ env.EX_OTP_VERSIONS }}-${{ hashFiles('**/mix.lock') }}
+            ${{ env.KEY_BASE }}-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
             ${{ env.KEY_BASE }}-
 
