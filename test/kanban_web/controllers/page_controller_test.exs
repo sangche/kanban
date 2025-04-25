@@ -7,6 +7,6 @@ defmodule KanbanWeb.PageControllerTest do
   end
 
   test "GET /error", %{conn: _conn} do
-  assert true
+    assert true
   end
 end
