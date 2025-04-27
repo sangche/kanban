@@ -16,10 +16,7 @@ set -x
 version_output=$(cat ./.tool-versions)	
 
 # extract the Elixir version	
-ELIXIR_VERSION=$(echo "$version_output" \	
-                | grep 'elixir' \	
-                | cut -d' ' -f2 \	
-                | cut -d'-' -f1)	
+ELIXIR_VERSION=$(echo "$version_output" | grep 'elixir' | cut -d' ' -f2 | cut -d'-' -f1)	
 
 # extract Erlang version	
 ERLANG_VERSION=$(echo "$version_output" | grep 'erlang' | cut -d' ' -f2)	
