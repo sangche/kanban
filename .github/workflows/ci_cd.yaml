@@ -89,17 +89,11 @@ jobs:
             type=ref,event=pr
             type=sha,format=short
 
-      - name: Parse versions from .tool-versions
-        id: parse-asdf
-        run: ./scripts/versions.sh
-
       - uses: docker/build-push-action@v5
         with:
           context: .
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
-          build-args: |
-            ELIXIR_VERSION=${{ env.ELIXIR_VERSION }}
-            OTP_VERSION=${{ env.ERLANG_VERSION }}
+          
 
