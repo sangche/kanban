@@ -9,6 +9,9 @@ ARG RUNNER_IMG="debian:${DEB_VSN}"
 FROM ${BUILDER_IMG} AS builder
 # END:runner-img-declaration
 
+# workaround for bug between QEMU and Erlang
+ENV ERL_FLAGS="+JPperf true"
+
 # prepare build dir
 WORKDIR /app
 
