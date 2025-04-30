@@ -1,0 +1,46 @@
+# in compose.yaml
+
+# version: "3.9"
+
+services:
+  db:
+    image: postgres
+    ports:
+      - ${POSTGRES_PORT:-5432}
+    healthcheck:
+      test: ["CMD", "pg_isready", "--username=postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web:
+    depends_on:
+      db: 
+        condition: service_healthy
+        restart: true
+    image: ${WEB_IMAGE:-ghcr.io/sangche/kanban:latest}
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 20s
+        max_attempts: 3
+        window: 120s
+    environment:
+      DATABASE_URL: ecto://postgres:postgres@db/postgres
+      SECRET_KEY_BASE: i3GzcASR/ha2Ly0Gd4RskD/ucWN3+GSx6jkIPmaVtlVVBT0D0Tu3dRU5EZcOyhjI
+      PHX_HOST: "localhost"
+    ports:
+      - 4000:4000
+    command: >
+      bash -c "bin/migrate && bin/server"
+
+volumes:
+  db_data:

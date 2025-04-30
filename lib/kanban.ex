@@ -6,7 +6,4 @@ defmodule Kanban do
   Contexts are also responsible for managing your data, regardless
   if it comes from the database, an external API or others.
   """
-
-  # just to cause fail for 'MIX_ENV=test mix compile --warnings-as-errors'
-  # ...
 end

@@ -10,6 +10,8 @@ defmodule Kanban.Application do
     children = [
       # Start the Telemetry supervisor
       KanbanWeb.Telemetry,
+      # Start the Ecto repository
+      Kanban.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: Kanban.PubSub},
       # Start Finch

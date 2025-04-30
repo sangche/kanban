@@ -7,7 +7,7 @@ defmodule KanbanWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_kanban_key",
-    signing_salt: "d4IvdaRo",
+    signing_salt: "vqnO4dpu",
     same_site: "Lax"
   ]
 
@@ -29,6 +29,7 @@ defmodule KanbanWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :kanban
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,

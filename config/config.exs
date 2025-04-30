@@ -7,6 +7,9 @@
 # General application configuration
 import Config
 
+config :kanban,
+  ecto_repos: [Kanban.Repo]
+
 # Configures the endpoint
 config :kanban, KanbanWeb.Endpoint,
   url: [host: "localhost"],
@@ -15,7 +18,7 @@ config :kanban, KanbanWeb.Endpoint,
     layout: false
   ],
   pubsub_server: Kanban.PubSub,
-  live_view: [signing_salt: "/bDLS73n"]
+  live_view: [signing_salt: "bofQwHGD"]
 
 # Configures the mailer
 #
