@@ -4,7 +4,7 @@
 
 services:
   db:
-    image: postgres
+    image: postgres:15.2
     ports:
       - ${POSTGRES_PORT:-5432}
     healthcheck:
