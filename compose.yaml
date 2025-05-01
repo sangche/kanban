@@ -23,9 +23,7 @@ services:
 
   web:
     depends_on:
-      db: 
-        condition: service_healthy
-        restart: true
+      - db
     image: ${WEB_IMAGE:-ghcr.io/sangche/kanban:latest}
     deploy:
       restart_policy:
